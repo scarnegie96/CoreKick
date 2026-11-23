@@ -78,9 +78,9 @@ export default function Stats() {
           <LineChart
             x={s.fitness.map((f) => new Date(f.date).getTime())}
             series={[
-              { name: "Fitness (CTL)", values: s.fitness.map((f) => f.ctl), color: "#4DA3FF", area: true, width: 2 },
-              { name: "Fatigue (ATL)", values: s.fitness.map((f) => f.atl), color: "#FF5A7A", width: 1.4 },
-              { name: "Form (TSB)", values: s.fitness.map((f) => f.tsb), color: "#FFD23F", width: 1.4, dashed: true },
+              { name: "Fitness (CTL)", values: s.fitness.map((f) => f.ctl), color: "#2F7FE0", area: true, width: 2 },
+              { name: "Fatigue (ATL)", values: s.fitness.map((f) => f.atl), color: "#E5466B", width: 1.4 },
+              { name: "Form (TSB)", values: s.fitness.map((f) => f.tsb), color: "#E3A600", width: 1.4, dashed: true },
             ]}
             height={220}
             xFormat={(v) => dateShort(new Date(v).toISOString())}
@@ -98,7 +98,7 @@ export default function Stats() {
               xTicks={curveX.filter((d) => [5, 60, 300, 1200, 3600].includes(d))}
               series={[
                 { name: "All time", values: s.power_curve_all.map((c) => (wkg ? c.wkg : c.watts)), color: "var(--accent)", width: 2.2, area: true },
-                { name: "Last 90 days", values: curveX.map((d) => { const c = c90.get(d); return c ? (wkg ? c.wkg : c.watts) : null; }), color: "#B8A6FF", width: 1.6, dashed: true },
+                { name: "Last 90 days", values: curveX.map((d) => { const c = c90.get(d); return c ? (wkg ? c.wkg : c.watts) : null; }), color: "#7259E8", width: 1.6, dashed: true },
               ]}
               height={240}
               xFormat={durLabel}

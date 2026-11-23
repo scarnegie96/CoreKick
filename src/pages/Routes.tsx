@@ -83,7 +83,7 @@ function RouteCard({ r, units, onOpen, onFav }: { r: RouteSummary; units: "metri
             <Pill color={difficultyColor(r.stats.difficulty)}>{r.stats.difficulty_label} · {r.stats.difficulty.toFixed(1)}</Pill>
             {r.is_loop && <Pill>Loop</Pill>}
             {r.source === "gpx" && <Pill>GPX</Pill>}
-            {r.best_time_s && <Pill color="#B8A6FF"><IconGhost size={11} /> {dur(r.best_time_s)}</Pill>}
+            {r.best_time_s && <Pill color="#7259E8"><IconGhost size={11} /> {dur(r.best_time_s)}</Pill>}
           </div>
         </div>
         <button className={`star ${r.favourite ? "on" : ""}`} onClick={(e) => { e.stopPropagation(); onFav(); }} aria-label="Favourite">
@@ -222,7 +222,7 @@ export function RouteDetailPage({ id }: { id: string }) {
                 {attempts.map((a, i) => (
                   <tr key={a.id} onClick={() => go("activity", { id: a.id })}>
                     <td>{a.completed ? i + 1 : "–"}</td>
-                    <td>{dateShort(a.started_at)} {a.personal_best && <Pill color="#FFD23F">PB</Pill>}</td>
+                    <td>{dateShort(a.started_at)} {a.personal_best && <Pill color="#E3A600">PB</Pill>}</td>
                     <td className="num">{a.route_time_s ? dur(a.route_time_s) : <span className="muted">DNF</span>}</td>
                     <td className="num">{Math.round(a.avg_power)}</td>
                     <td className="num">{Math.round(a.np)}</td>

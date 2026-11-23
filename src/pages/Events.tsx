@@ -6,7 +6,7 @@ import type { EventTarget, EventView, Freq, RideEvent, RideSummary, TestKind } f
 import { Btn, Card, Empty, Field, Modal, NumberInput, PageHeader, Pill, Segmented, Toggle, confirmAsk } from "../components/ui";
 import { IconCalendar, IconEdit, IconFlame, IconPlay, IconPlus, IconRepeat, IconTrash, IconTrophy } from "../components/icons";
 
-const COLORS = ["#7CFFB2", "#4DA3FF", "#FFD23F", "#FF9F43", "#FF5A7A", "#B36BFF", "#64D8CB"];
+const COLORS = ["#1DB870", "#2F7FE0", "#E3A600", "#F07A1A", "#E5466B", "#8E4EC6", "#1FA595"];
 
 function scheduleText(ev: RideEvent): string {
   const r = ev.recurrence;
@@ -68,7 +68,7 @@ export default function Events() {
                   <div className="row gap8 center wrap">
                     <h3>{v.event.name}</h3>
                     {!v.event.active && <Pill>Paused</Pill>}
-                    {v.streak > 1 && <Pill color="#FF9F43"><IconFlame size={11} /> {v.streak} in a row</Pill>}
+                    {v.streak > 1 && <Pill color="#F07A1A"><IconFlame size={11} /> {v.streak} in a row</Pill>}
                   </div>
                   <div className="muted">{v.target_name} · {scheduleText(v.event)}</div>
                   {v.event.description && <p className="small mt4">{v.event.description}</p>}
@@ -269,7 +269,7 @@ function EventHistory({ view, units, onClose }: { view: EventView; units: "metri
             {sorted.map((r, i) => (
               <tr key={r.id} onClick={() => { onClose(); go("activity", { id: r.id }); }}>
                 <td>{i + 1}</td>
-                <td>{dateShort(r.started_at)} {r.personal_best && <Pill color="#FFD23F">PB</Pill>}</td>
+                <td>{dateShort(r.started_at)} {r.personal_best && <Pill color="#E3A600">PB</Pill>}</td>
                 <td className="num">{timed ? (r.route_time_s ? dur(r.route_time_s) : "DNF") : dur(r.moving_s)}</td>
                 <td className="num">{dist(r.distance_m, units)} {distUnit(units)}</td>
                 <td className="num">{Math.round(r.avg_power)}</td>

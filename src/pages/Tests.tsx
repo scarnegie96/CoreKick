@@ -16,7 +16,7 @@ const ZONE_ROWS = [
   ["Z6", "Anaerobic", 1.21, 1.5],
   ["Z7", "Neuromuscular", 1.51, null],
 ] as const;
-const ZC = ["#8A94A6", "#4DA3FF", "#3DDC97", "#FFD23F", "#FF9F43", "#FF5A5F", "#B36BFF"];
+const ZC = ["#9AA3B2", "#2F7FE0", "#16B57A", "#E3A600", "#F07A1A", "#E5484D", "#8E4EC6"];
 
 export default function Tests() {
   const { profile, setProfile, prepareRide, toast } = useApp();

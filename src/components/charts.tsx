@@ -264,7 +264,7 @@ export function ElevationProfile({
             <path d={fillPath} fill={`url(#gr${uid})`} opacity={progress ? 0.4 : 0.88} />
             {progress && posX != null && <path d={fillPath} fill={`url(#gr${uid})`} clipPath={`url(#cl${uid})`} opacity={0.95} />}
           </g>
-          <path d={line} fill="none" stroke="rgba(255,255,255,.85)" strokeWidth={axis ? 1.6 : 1.2} strokeLinejoin="round" />
+          <path d={line} fill="none" stroke="var(--ink)" strokeOpacity={0.75} strokeWidth={axis ? 1.6 : 1.2} strokeLinejoin="round" />
           {sectorEls}
           {climbEls}
           {ghost != null && marker(ghost, "ghost-mark", 6)}
@@ -296,8 +296,8 @@ export function WorkoutChart({ steps, ftp, t, height = 120, axis = false, bias =
         <svg width={w} height={height}>
           <defs>
             <pattern id={`h${uid}`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <rect width="6" height="6" fill="rgba(255,255,255,.06)" />
-              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,.22)" strokeWidth="2" />
+              <rect width="6" height="6" fill="rgba(15,23,42,.04)" />
+              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(15,23,42,.16)" strokeWidth="2" />
             </pattern>
           </defs>
           {axis && (
@@ -336,8 +336,8 @@ export function WorkoutChart({ steps, ftp, t, height = 120, axis = false, bias =
           })}
           {t != null && t <= total && (
             <g>
-              <line x1={x(t)} x2={x(t)} y1={pad.t} y2={pad.t + ih} stroke="#fff" strokeWidth={2} />
-              <circle cx={x(t)} cy={pad.t + 3} r={4} fill="#fff" />
+              <line x1={x(t)} x2={x(t)} y1={pad.t} y2={pad.t + ih} stroke="var(--ink)" strokeWidth={2} />
+              <circle cx={x(t)} cy={pad.t + 3} r={4} fill="var(--ink)" />
             </g>
           )}
         </svg>
@@ -615,7 +615,7 @@ export function BarChart({ labels, values, height = 160, color = "var(--accent)"
 /** Horizontal stacked bar of time-in-zone. */
 export function ZoneBar({ zones, height = 14 }: { zones: number[]; height?: number }) {
   const total = zones.reduce((a, b) => a + b, 0) || 1;
-  const cols = ["#8A94A6", "#4DA3FF", "#3DDC97", "#FFD23F", "#FF9F43", "#FF5A5F", "#B36BFF"];
+  const cols = ["#9AA3B2", "#2F7FE0", "#16B57A", "#E3A600", "#F07A1A", "#E5484D", "#8E4EC6"];
   return (
     <div className="zonebar" style={{ height }}>
       {zones.map((z, i) =>

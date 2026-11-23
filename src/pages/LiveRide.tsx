@@ -279,8 +279,8 @@ export default function LiveRide() {
       x: h.t.slice(),
       series: [
         { name: "Power", values: h.p.slice(), color: "var(--accent)", area: true, width: 1.8 },
-        ...(h.target.some((v) => v != null) ? [{ name: "Target", values: h.target.slice(), color: "#fff", dashed: true, width: 1.4 }] : []),
-        ...(h.hr.some((v) => v != null) ? [{ name: "HR", values: h.hr.slice(), color: "#FF5A7A", width: 1.2 }] : []),
+        ...(h.target.some((v) => v != null) ? [{ name: "Target", values: h.target.slice(), color: "var(--ink)", dashed: true, width: 1.4 }] : []),
+        ...(h.hr.some((v) => v != null) ? [{ name: "HR", values: h.hr.slice(), color: "#E5466B", width: 1.2 }] : []),
       ],
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -362,7 +362,7 @@ export default function LiveRide() {
               label={<><IconHeart size={12} /> Heart rate</>}
               value={s?.heart_rate ? Math.round(s.heart_rate) : "–"}
               unit="bpm"
-              color={s?.hr_zone ? hrZoneColor(s.hr_zone, s.hr_zone_count) : "#FF6B8B"}
+              color={s?.hr_zone ? hrZoneColor(s.hr_zone, s.hr_zone_count) : "#E5466B"}
               sub={
                 isFree && s?.free_mode === "heart_rate"
                   ? `target ${Math.round(s.hr_target_bpm)}`

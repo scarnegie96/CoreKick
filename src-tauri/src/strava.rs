@@ -152,7 +152,7 @@ fn percent_decode(s: &str) -> String {
     String::from_utf8_lossy(&out).into_owned()
 }
 
-const DONE_PAGE: &str = "<!doctype html><html><body style=\"font-family:-apple-system,sans-serif;background:#0a0d13;color:#e9edf4;display:grid;place-items:center;height:100vh;margin:0\"><div style=\"text-align:center\"><h1 style=\"color:#7cffb2\">Connected to Strava</h1><p>You can close this tab and return to CoreKick.</p></div></body></html>";
+const DONE_PAGE: &str = "<!doctype html><html><body style=\"font-family:-apple-system,sans-serif;background:#f3f5f8;color:#111827;display:grid;place-items:center;height:100vh;margin:0\"><div style=\"text-align:center\"><h1 style=\"color:#0f9d58\">Connected to Strava</h1><p>You can close this tab and return to CoreKick.</p></div></body></html>";
 
 /// Run the OAuth flow. Opens the system browser and waits up to 5 minutes.
 pub async fn connect(app: AppHandle) -> Result<StravaStatus> {

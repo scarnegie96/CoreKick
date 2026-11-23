@@ -165,7 +165,7 @@ export default function Home() {
                 <div className="row gap8">
                   <Pill color={difficultyColor(featured.stats.difficulty)}>{featured.stats.difficulty_label}</Pill>
                   {featured.best_time_s && (
-                    <Pill color="#B8A6FF">
+                    <Pill color="#7259E8">
                       <IconGhost size={12} /> PB {dur(featured.best_time_s)}
                     </Pill>
                   )}
@@ -210,7 +210,7 @@ export default function Home() {
                 <tr key={r.id} onClick={() => go("activity", { id: r.id })}>
                   <td className="muted w120">{relDay(r.started_at)}</td>
                   <td>
-                    <b>{r.name}</b> {r.personal_best && <Pill color="#FFD23F"><IconTrophy size={11} /> PB</Pill>}
+                    <b>{r.name}</b> {r.personal_best && <Pill color="#E3A600"><IconTrophy size={11} /> PB</Pill>}
                     {r.test_result && <Pill color="var(--accent)">FTP {r.test_result.ftp} W</Pill>}
                   </td>
                   <td className="num">{dur(r.moving_s)}</td>

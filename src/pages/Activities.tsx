@@ -59,7 +59,7 @@ export default function Activities() {
                 <tr key={r.id} onClick={() => go("activity", { id: r.id })}>
                   <td className="muted">{dateShort(r.started_at)} {timeOfDay(r.started_at)}</td>
                   <td>
-                    <b>{r.name}</b> {r.personal_best && <Pill color="#FFD23F"><IconTrophy size={11} /> PB</Pill>}
+                    <b>{r.name}</b> {r.personal_best && <Pill color="#E3A600"><IconTrophy size={11} /> PB</Pill>}
                     {r.test_result && <Pill color="var(--accent)">FTP {r.test_result.ftp}</Pill>}
                   </td>
                   <td className="muted">{KIND_LABEL[r.kind]}</td>
@@ -110,12 +110,12 @@ export function ActivityDetail({ id, fresh }: { id: string; fresh?: boolean }) {
       t,
       power: [
         { name: "Power", values: s.power, color: "var(--accent)", area: true, width: 1.4, format: (v: number) => `${Math.round(v)} W` },
-        ...(hasTarget ? [{ name: "Target", values: s.target.map((v) => (v > 0 ? v : null)), color: "#fff", dashed: true, width: 1.2, format: (v: number) => `${Math.round(v)} W` }] : []),
+        ...(hasTarget ? [{ name: "Target", values: s.target.map((v) => (v > 0 ? v : null)), color: "var(--ink)", dashed: true, width: 1.2, format: (v: number) => `${Math.round(v)} W` }] : []),
       ],
-      hr: hasHr ? [{ name: "Heart rate", values: s.hr.map((v) => (v > 0 ? v : null)), color: "#FF5A7A", width: 1.4, format: (v: number) => `${Math.round(v)} bpm` }] : null,
-      cad: [{ name: "Cadence", values: s.cadence, color: "#4DA3FF", width: 1.2, format: (v: number) => `${Math.round(v)} rpm` }],
-      spd: [{ name: "Speed", values: s.speed.map((v) => v * 3.6 / (units === "imperial" ? 1.609344 : 1)), color: "#FFD23F", width: 1.2, format: (v: number) => `${v.toFixed(1)} ${speedUnit(units)}` }],
-      ele: [{ name: "Elevation", values: s.ele.map((v) => (units === "imperial" ? v * 3.28084 : v)), color: "#8A94A6", area: true, width: 1.2, format: (v: number) => `${Math.round(v)} ${elevUnit(units)}` }],
+      hr: hasHr ? [{ name: "Heart rate", values: s.hr.map((v) => (v > 0 ? v : null)), color: "#E5466B", width: 1.4, format: (v: number) => `${Math.round(v)} bpm` }] : null,
+      cad: [{ name: "Cadence", values: s.cadence, color: "#2F7FE0", width: 1.2, format: (v: number) => `${Math.round(v)} rpm` }],
+      spd: [{ name: "Speed", values: s.speed.map((v) => v * 3.6 / (units === "imperial" ? 1.609344 : 1)), color: "#E3A600", width: 1.2, format: (v: number) => `${v.toFixed(1)} ${speedUnit(units)}` }],
+      ele: [{ name: "Elevation", values: s.ele.map((v) => (units === "imperial" ? v * 3.28084 : v)), color: "#9AA3B2", area: true, width: 1.2, format: (v: number) => `${Math.round(v)} ${elevUnit(units)}` }],
     };
   }, [data, units]);
 
@@ -158,7 +158,7 @@ export function ActivityDetail({ id, fresh }: { id: string; fresh?: boolean }) {
     <div className="page">
       <PageHeader
         back={fresh ? undefined : back}
-        title={editing ? <input className="title-in" value={name} onChange={(e) => setName(e.target.value)} autoFocus /> : <>{r.name} {r.personal_best && <Pill color="#FFD23F" solid><IconTrophy size={12} /> Personal best</Pill>}</>}
+        title={editing ? <input className="title-in" value={name} onChange={(e) => setName(e.target.value)} autoFocus /> : <>{r.name} {r.personal_best && <Pill color="#E3A600" solid><IconTrophy size={12} /> Personal best</Pill>}</>}
         sub={`${dateLong(r.started_at)} · ${timeOfDay(r.started_at)} · ${KIND_LABEL[r.kind]}${r.route_name && r.kind !== "route" ? ` on ${r.route_name}` : ""}${r.laps > 1 ? ` · ${r.laps} laps` : ""}${r.route_modified ? " · course edited during ride" : ""}`}
         actions={
           editing ? (
@@ -237,7 +237,7 @@ export function ActivityDetail({ id, fresh }: { id: string; fresh?: boolean }) {
       </div>
       {(r.route_time_s || r.avg_hr) && (
         <div className="grid g6 mt16">
-          {r.route_time_s && <Card><Stat label="Route time" value={dur(r.route_time_s)} color={r.personal_best ? "#FFD23F" : undefined} sub={r.personal_best ? "Personal best!" : "completed"} /></Card>}
+          {r.route_time_s && <Card><Stat label="Route time" value={dur(r.route_time_s)} color={r.personal_best ? "#E3A600" : undefined} sub={r.personal_best ? "Personal best!" : "completed"} /></Card>}
           {r.avg_hr && <Card><Stat label="Heart rate" value={Math.round(r.avg_hr)} unit="bpm" sub={`max ${Math.round(r.max_hr ?? 0)}`} /></Card>}
           <Card><Stat label="Cadence" value={Math.round(r.avg_cadence)} unit="rpm" sub={`max ${Math.round(r.max_cadence)}`} /></Card>
           <Card><Stat label="W/kg (NP)" value={(r.np / (r.weight_kg || 75)).toFixed(2)} /></Card>
@@ -341,7 +341,7 @@ export function ActivityDetail({ id, fresh }: { id: string; fresh?: boolean }) {
                     <td>{d < 60 ? `${d} s` : d < 3600 ? `${d / 60} min` : `${d / 3600} h`}</td>
                     <td className="num"><b>{Math.round(w)}</b> W</td>
                     <td className="num">{(w / (r.weight_kg || 75)).toFixed(2)}</td>
-                    <td className="num">{isBest ? <Pill color="#FFD23F">Best ever</Pill> : b ? <span className="muted">{num(b.watts)} W</span> : "–"}</td>
+                    <td className="num">{isBest ? <Pill color="#E3A600">Best ever</Pill> : b ? <span className="muted">{num(b.watts)} W</span> : "–"}</td>
                   </tr>
                 );
               })}

@@ -84,7 +84,7 @@ export function relDay(iso: string): string {
   return dateShort(iso);
 }
 
-export const ZONE_COLORS = ["#8A94A6", "#4DA3FF", "#3DDC97", "#FFD23F", "#FF9F43", "#FF5A5F", "#B36BFF"];
+export const ZONE_COLORS = ["#9AA3B2", "#2F7FE0", "#16B57A", "#E3A600", "#F07A1A", "#E5484D", "#8E4EC6"];
 export const ZONE_NAMES = ["Recovery", "Endurance", "Tempo", "Threshold", "VO2 Max", "Anaerobic", "Neuromuscular"];
 export const ZONE_BOUNDS = [0.55, 0.75, 0.9, 1.05, 1.2, 1.5];
 
@@ -98,37 +98,37 @@ export const zoneColor = (watts: number, ftp: number) => ZONE_COLORS[zoneIndex(w
 
 /** Colour for a gradient in percent. */
 export function gradeColor(g: number): string {
-  if (g < -4) return "#4FC3F7";
-  if (g < -1) return "#64D8CB";
-  if (g < 2) return "#7CFFB2";
-  if (g < 4.5) return "#C8F560";
-  if (g < 7) return "#FFD23F";
-  if (g < 9.5) return "#FF9F43";
-  if (g < 12) return "#FF5A5F";
-  return "#C266FF";
+  if (g < -4) return "#1A9ED8";
+  if (g < -1) return "#1FA595";
+  if (g < 2) return "#1DB870";
+  if (g < 4.5) return "#7CB82F";
+  if (g < 7) return "#E3A600";
+  if (g < 9.5) return "#F07A1A";
+  if (g < 12) return "#E5484D";
+  return "#9B4DDB";
 }
 
 export function categoryColor(cat: string): string {
   switch (cat) {
-    case "HC": return "#C266FF";
-    case "Cat 1": return "#FF5A5F";
-    case "Cat 2": return "#FF9F43";
-    case "Cat 3": return "#FFD23F";
-    case "Cat 4": return "#C8F560";
-    default: return "#7CFFB2";
+    case "HC": return "#9B4DDB";
+    case "Cat 1": return "#E5484D";
+    case "Cat 2": return "#F07A1A";
+    case "Cat 3": return "#E3A600";
+    case "Cat 4": return "#7CB82F";
+    default: return "#1DB870";
   }
 }
 
 export function difficultyColor(score: number): string {
-  if (score < 2.5) return "#7CFFB2";
-  if (score < 4.5) return "#C8F560";
-  if (score < 6.5) return "#FFD23F";
-  if (score < 8.5) return "#FF9F43";
-  return "#FF5A5F";
+  if (score < 2.5) return "#1DB870";
+  if (score < 4.5) return "#7CB82F";
+  if (score < 6.5) return "#E3A600";
+  if (score < 8.5) return "#F07A1A";
+  return "#E5484D";
 }
 
-const HR5 = ["#8A94A6", "#4DA3FF", "#3DDC97", "#FF9F43", "#FF5A5F"];
-const HR7 = ["#8A94A6", "#4DA3FF", "#3DDC97", "#FFD23F", "#FF9F43", "#FF5A5F", "#B36BFF"];
+const HR5 = ["#9AA3B2", "#2F7FE0", "#16B57A", "#F07A1A", "#E5484D"];
+const HR7 = ["#9AA3B2", "#2F7FE0", "#16B57A", "#E3A600", "#F07A1A", "#E5484D", "#8E4EC6"];
 /** Colour for a 1-based heart-rate zone in a model with `count` zones. */
 export function hrZoneColor(zone: number, count: number): string {
   const t = count > 5 ? HR7 : HR5;

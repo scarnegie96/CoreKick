@@ -473,7 +473,7 @@ pub struct Event {
 }
 
 fn default_color() -> String {
-    "#7CFFB2".into()
+    "#1DB870".into()
 }
 fn yes() -> bool {
     true

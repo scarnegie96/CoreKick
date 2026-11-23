@@ -86,7 +86,7 @@ export function EftpCard() {
               : <>95 % of best 20-min power (not enough 3–10 min efforts for a CP fit)</>}
             {" · "}{e.rides_considered} ride{e.rides_considered === 1 ? "" : "s"} in the last 90 days
           </p>
-          <table className="tbl mt8">
+          <table className="tbl compact mt8">
             <tbody>
               {e.points.map((p) => (
                 <tr key={p.duration_s} className="click" onClick={() => go("activity", { id: p.ride_id })}>

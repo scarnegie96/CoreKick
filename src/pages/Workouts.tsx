@@ -144,7 +144,7 @@ function WorkoutCard({ w, ftp, onRide, onEdit, onExport, onDelete }: { w: Workou
           <div className="row gap6 wrap">
             <Pill>{w.workout.category}</Pill>
             {!w.workout.builtin && <Pill color="var(--accent)">Mine</Pill>}
-            {w.times_ridden > 0 && <Pill color="#B8A6FF">Ridden {w.times_ridden}×</Pill>}
+            {w.times_ridden > 0 && <Pill color="#7259E8">Ridden {w.times_ridden}×</Pill>}
           </div>
         </div>
         <div className="row gap4">
@@ -380,7 +380,7 @@ export function WorkoutEditor({ initial }: { initial: Workout }) {
             {preview ? (
               <>
                 <WorkoutChart steps={preview.steps} ftp={ftp} height={200} axis />
-                <div className="grid g5 mt16">
+                <div className="grid g5 mt16" style={{ gridTemplateColumns: "1.1fr 0.7fr 0.7fr 1.5fr 1fr" }}>
                   <Stat label="Duration" value={dur(preview.estimate.duration_s)} />
                   <Stat label="TSS" value={preview.estimate.tss.toFixed(0)} />
                   <Stat label="IF" value={preview.estimate.intensity_factor.toFixed(2)} />
